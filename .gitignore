@@ -1,0 +1,4 @@
+#my ignore list
+/.idea/
+/__pycache__/
+/venv/
