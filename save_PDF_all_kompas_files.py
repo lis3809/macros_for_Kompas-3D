@@ -39,30 +39,30 @@ def parse_kompas_files(paths):
     kompas6_constants, kompas_object, application_api7 = get_kompas_api()
 
     for path in paths:
-        kompas_document = application_api7.Documents.Open(PathName=path,
-                                                          Visible=False,
-                                                          ReadOnly=True)  # Откроем файл в невидимом режиме без права его изменять
+        kompas_document_api7 = application_api7.Documents.Open(PathName=path,
+                                                               Visible=False,
+                                                               ReadOnly=True)  # Откроем файл в невидимом режиме без права его изменять
 
         # Если чертеж
         if path.endswith('.cdw'):
             new_path_to_PDF = path.replace('.cdw', '.pdf')
             print(new_path_to_PDF)
             iConverter = application_api7.Converter(kompas_object.ksSystemPath(5) + "\Pdf2d.dll")
-            iConverter.Convert(kompas_document.PathName, new_path_to_PDF, 0, False)
+            iConverter.Convert(kompas_document_api7.PathName, new_path_to_PDF, 0, False)
         # Если спецификация
         elif path.endswith('.spw'):
             new_path_to_PDF = path.replace('.spw', '.pdf')
             print(new_path_to_PDF)
             iConverter = application_api7.Converter(kompas_object.ksSystemPath(5) + "\Pdf2d.dll")
-            iConverter.Convert(kompas_document.PathName, new_path_to_PDF, 0, False)
+            iConverter.Convert(kompas_document_api7.PathName, new_path_to_PDF, 0, False)
         # Если фрагмент
         elif path.endswith('.frw'):
             new_path_to_PDF = path.replace('.frw', '.pdf')
             print(new_path_to_PDF)
             iConverter = application_api7.Converter(kompas_object.ksSystemPath(5) + "\Pdf2d.dll")
-            iConverter.Convert(kompas_document.PathName, new_path_to_PDF, 0, False)
+            iConverter.Convert(kompas_document_api7.PathName, new_path_to_PDF, 0, False)
 
-        kompas_document.Close(kompas6_constants.kdDoNotSaveChanges)  # Закроем файл без изменения
+        kompas_document_api7.Close(kompas6_constants.kdDoNotSaveChanges)  # Закроем файл без изменения
 
     if not is_run:
         application_api7.Quit()  # Закрываем программу при необходимости

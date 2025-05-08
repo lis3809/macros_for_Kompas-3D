@@ -62,3 +62,15 @@ application7.MessageBoxEx("Создан файл PDF", "Сохранение в 
 
 
 # save_as_png(input_file_path, output_png_path)
+
+
+"""Работа с АПИ 7"""
+        # # Приводим интерфейс IKompasDocument к виду IKompasDocument3D
+        # iKompasDocument3D = win32com.client.CastTo(iKompasDocument_api7, "IKompasDocument3D")
+        # # Получаем указатель на интерфейс IPart7
+        # iPart7 = iKompasDocument3D.TopPart
+        #
+        # # Выводим количество компонентов и обозначение каждого компонента в консоль
+        # count = iPart7.InstanceCount(None)
+        # for i in range(count):
+        #     print(iPart7.Parts.Part(i).Marking)
